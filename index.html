@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <div class="floating-leaf leaf-1"></div>
+    <div class="floating-leaf leaf-2"></div>
+    <div class="floating-leaf leaf-3"></div>
+    <div class="floating-leaf leaf-4"></div>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo-mark">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M18 2C18 2 8 8 8 18C8 28 18 34 18 34C18 34 28 28 28 18C28 8 18 2 18 2Z" fill="var(--green-400)" opacity="0.6"/>
+                    <path d="M18 6C18 6 11 11 11 18C11 25 18 30 18 30C18 30 25 25 25 18C25 11 18 6 18 6Z" fill="var(--green-500)" opacity="0.8"/>
+                    <line x1="18" y1="12" x2="18" y2="28" stroke="var(--green-200)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M18 16C20 14 22 14 23 15" stroke="var(--green-200)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                    <path d="M18 20C16 18 14 18 13 19" stroke="var(--green-200)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                </svg>
+            </div>
+            <h1 class="title">Body Mass Index</h1>
+            <p class="subtitle">A mindful measure of wellness</p>
+        </header>
+
+        <div class="card">
+            <div class="unit-toggle">
+                <button class="unit-btn active" data-unit="metric">Metric</button>
+                <button class="unit-btn" data-unit="imperial">Imperial</button>
+                <div class="toggle-slider"></div>
+            </div>
+
+            <form id="bmi-form" class="form" autocomplete="off">
+                <div class="input-row">
+                    <div class="input-group" data-stagger="1">
+                        <label class="label" for="height">Height</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="height" class="input" placeholder="170" step="any" min="0" required>
+                            <span class="unit-label" id="height-unit">cm</span>
+                        </div>
+                    </div>
+                    <div class="input-group" data-stagger="2">
+                        <label class="label" for="weight">Weight</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="weight" class="input" placeholder="65" step="any" min="0" required>
+                            <span class="unit-label" id="weight-unit">kg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn" id="calc-btn">
+                    <span class="btn-text">Calculate BMI</span>
+                    <span class="btn-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+
+        <div class="result-card" id="result-card">
+            <div class="result-inner">
+                <div class="bmi-ring" id="bmi-ring">
+                    <svg viewBox="0 0 160 160" class="ring-svg">
+                        <circle cx="80" cy="80" r="70" class="ring-bg"/>
+                        <circle cx="80" cy="80" r="70" class="ring-progress" id="ring-progress"/>
+                    </svg>
+                    <div class="bmi-value-wrap">
+                        <span class="bmi-value" id="bmi-value">0</span>
+                        <span class="bmi-label">BMI</span>
+                    </div>
+                </div>
+
+                <div class="result-details">
+                    <div class="category-badge" id="category-badge">
+                        <span class="category-dot" id="category-dot"></span>
+                        <span class="category-text" id="category-text">—</span>
+                    </div>
+                    <p class="result-description" id="result-description"></p>
+
+                    <div class="scale-bar">
+                        <div class="scale-track">
+                            <div class="scale-segment" style="--seg-color: var(--blue-muted); flex: 18.5"></div>
+                            <div class="scale-segment" style="--seg-color: var(--green-500); flex: 6.5"></div>
+                            <div class="scale-segment" style="--seg-color: var(--amber); flex: 5"></div>
+                            <div class="scale-segment" style="--seg-color: var(--coral); flex: 10"></div>
+                        </div>
+                        <div class="scale-marker" id="scale-marker"></div>
+                        <div class="scale-labels">
+                            <span>Under</span>
+                            <span>Normal</span>
+                            <span>Over</span>
+                            <span>Obese</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>BMI is a screening tool, not a diagnostic measure. Consult a healthcare provider for personalized advice.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
